@@ -1,2 +1,4 @@
-# SWE-573
-This is the repository of a project about twitter API for the class SWE-573 in Boğaziçi University. More is coming soon.
+# TweetFeels
+TweetFeels is an app designed to show what other people feels about a selected Twitter user. You don't need to login to use TweetFeels. It uses Twitter API to get the tweets that the selected user is mentioned and uses sentimental analysis on these tweets. If you want more information you can check the wiki of the project.
+
+Wiki page: 
