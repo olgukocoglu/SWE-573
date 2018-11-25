@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="alignCenter">
+    <h1 class="aquaText noMargin topPadding30">Welcome to TweetFeels!</h1>
+    <h3 class="aquaText noMargin topPadding30">Type the Twitter account you want to know what public thinks about!</h3>
+    <form class="noMargin topPadding40" method="POST" action="{% url 'results' %}">
+        {% csrf_token %}
+        <input class="input" placeholder="Account Name" name="accountName">
+        <div class="clear"></div>
+        <button class="goButton topMargin30" type="submit">Go</button>
+    </form>
+</div>
+{% endblock %}
