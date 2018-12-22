@@ -1,5 +1,8 @@
 from django.shortcuts import render
+from django.http import JsonResponse
+from textblob import TextBlob
 import tweepy
+import os
 
 def home(request):
     return render(request, 'home.html', {})
@@ -7,10 +10,10 @@ def home(request):
 def results(request):
     accountName = request.POST['accountName']
 
-    consumerKey = '5KEHxKw8MNAUi7tLG0wzcGBzn'
-    consumerSecret = '2bbOhPU202QmzwWIoF5RaAlyhskK5jmMXr6Acsa2lbd4VrGVz6'
-    accessKey = 	'2887799968-RwINMC25oQ2a888BNdgZZAgQKPowo68BfIstq7i'
-    accessSecret = 'FXJFIcTbSRLdb3aLPWpFDKI5nHbETHvYyQimZXvs1FHfZ'
+    consumerKey = os.environ['consumerKey']
+    consumerSecret = os.environ['consumerSecret']
+    accessKey = os.environ['accessKey']
+    accessSecret = os.environ['accessSecret']
 
     auth = tweepy.OAuthHandler(consumerKey, consumerSecret)
     auth.set_access_token(accessKey, accessSecret)
@@ -19,6 +22,7 @@ def results(request):
     searchedTweets = []
     lastId = -1
     maxTweets = 1000
+    data = [0, 0, 0]
 
     while len(searchedTweets) < maxTweets:
         count = maxTweets - len(searchedTweets)
@@ -30,7 +34,17 @@ def results(request):
             lastId = newTweets[-1].id
         except tweepy.TweepError as e:
             break
+    
+    for tweet in searchedTweets:
+        blob = TextBlob(tweet.text)
+        polarity = blob.sentiment.polarity
+        print(tweet.text, polarity)
 
-    print(len(searchedTweets))
+        if polarity == 0:
+            data[1] += 1
+        elif polarity > 0:
+            data[0] += 1
+        elif polarity < 0:
+            data[2] += 1
 
-    return render(request, 'results.html', {'accountName':accountName})
+    return render(request, 'results.html', {'accountName':accountName, 'data':data})
