@@ -5,9 +5,9 @@ class SentimentalAnalysis:
 
     def makeAnalysisOnArray(self, searchedTweets):
         for tweet in searchedTweets:
-            blob = TextBlob(tweet.text)
+            blob = TextBlob(tweet.full_text)
             polarity = blob.sentiment.polarity
-            print(tweet.text, polarity)
+            print(tweet.full_text, polarity)
 
             if polarity == 0:
                 self.data[1] += 1

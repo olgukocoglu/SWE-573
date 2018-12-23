@@ -4,6 +4,7 @@ import os
 class TwitterAPI:
     searchedTweets = []
     minimumTweetCount = 500
+    maxTweets = 1000
 
     def getTweets(self, query):
         consumerKey = os.environ['consumerKey']
@@ -17,12 +18,11 @@ class TwitterAPI:
 
         searchedTweets = []
         lastId = -1
-        maxTweets = 1000
 
-        while len(searchedTweets) < maxTweets:
-            count = maxTweets - len(searchedTweets)
+        while len(searchedTweets) < self.maxTweets:
+            count = self.maxTweets - len(searchedTweets)
             try:
-                newTweets = api.search(q=query, count=count, max_id=str(lastId - 1))
+                newTweets = api.search(q=query, count=count, tweet_mode="extended", max_id=str(lastId - 1))
                 if not newTweets:
                     break
                 searchedTweets.extend(newTweets)
@@ -31,6 +31,8 @@ class TwitterAPI:
                 break
                 
         self.searchedTweets = searchedTweets
+        for tweet in searchedTweets:
+            print(tweet.full_text)
         return searchedTweets
     
     def checkTweetCount(self):

@@ -3,9 +3,9 @@ from .classes.twitterApi import TwitterAPI
 from .classes.analysis import SentimentalAnalysis
 
 class tweetModel:
-    text = ""
+    full_text = ""
     def __init__(self, tweetText):
-        self.text = tweetText
+        self.full_text = tweetText
 
 class TweetFeelsTest(TestCase):
     testQuery = "dksjfdakjskladjfkjldsfhkjhdfskjhadfsklafdk"
@@ -24,7 +24,7 @@ class TweetFeelsTest(TestCase):
         self.assertEquals(len(tweets), 10)
 
         for tweet in tweets:
-            self.assertTrue(self.testQuery in tweet.text)
+            self.assertTrue(self.testQuery in tweet.full_text)
     
     def testTweetCountDoesNotSatisfyMinimumTweetCount(self):
         error = self.twitterAPI.checkTweetCount()
@@ -34,7 +34,6 @@ class TweetFeelsTest(TestCase):
         self.twitterAPI.minimumTweetCount = 10
         error = self.twitterAPI.checkTweetCount()
         self.assertEquals(error, "")
-        self.twitterAPI.minimumTweetCount = 500
 
     def testSentimentalAnalysisInstance(self):
         self.assertTrue(isinstance(self.sentimentalAnalysis, SentimentalAnalysis))
