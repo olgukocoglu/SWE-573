@@ -1,14 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="alignCenter">
-    <h1 class="aquaText noMargin topPadding30">Welcome to TweetFeels!</h1>
-    <h3 class="aquaText noMargin topPadding30">Type the Twitter account you want to know what public thinks about!</h3>
-    <form class="noMargin topPadding40" method="POST" action="{% url 'results' %}">
+<div class="verticalAllign">
+    <h1 class="text-center aquaText">Welcome to TweetFeels!</h1>
+    <h3 class="text-center aquaText">Type a query to find out what public thinks about it on Twitter!</h3>
+    <div style="margin-top: 60px;"></div>
+    <form class="form-horizontal" method="POST" action="{% url 'results' %}">
         {% csrf_token %}
-        <input class="input" placeholder="Account Name" name="accountName">
-        <div class="clear"></div>
-        <button class="goButton topMargin30" type="submit">Go</button>
+        <div class="form-group">
+            <div class="col-xs-3 col-sm-4"></div>
+            <div class="col-xs-6 col-sm-4">
+                <input class="form-control form-control-lg input" placeholder="Write a Query" name="query">
+            </div>
+            <div class="col-xs-3 col-sm-4"></div>
+        </div>
+        <div class="form-group">
+            <div class="col-xs-4 col-sm-5"></div>
+            <div class="col-xs-4 col-sm-2">
+                <button class="btn btn-block Button" type="submit">Go</button>
+            </div>
+            <div class="col-xs-4 col-sm-5"></div>
+        </div>
     </form>
 </div>
 {% endblock %}

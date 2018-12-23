@@ -1,118 +1,22 @@
 <html>
     <head>
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-        <link rel="stylesheet" href="/TweetFeelsApp/templates/home.css">
+        {% load static %}
+        <link rel="stylesheet" href="../static/base.css">
     </head>
     <body>
-        <div class="header aqua"></div>
-        <div class="content">
+        <div class="navbar"></div>
+        <div class="container">
             {% block content %}
+            
             {% endblock %}
         </div>
-        <div class="clear"></div>
-        <div class="header aqua"></div>
+        <div class="navbar footer"></div>
     </body>
 </html>
-
-<style>
-    html {
-        font-family: 'Lato', sans-serif;
-        height: 100%;
-        width: 100%;
-    }
-    body {
-        margin: 0;
-    }
-    .clear {
-        clear: both;
-    }
-    .header {
-        height: 15%;
-        width: 100%;
-    }
-    .content {
-        height: 70%;
-    }
-    .reportNamediv {
-        height: 20%;
-    }
-    .reportName {
-        font-size: 220%;
-    }
-    .canvas {
-        max-height: 80%;
-        min-height: 80%;
-        max-width: 50%;
-        min-width: 50%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .aqua {
-        background-color: #00c8f8;
-    }
-    .aquaText {
-        color: #00c8f8;
-    }
-    .textAlignCenter {
-        text-align: center;
-    }
-    .alignCenter {
-        text-align: center;
-        height: 100%;
-        vertical-align: middle;
-    }
-    .topPadding30 {
-        padding-top: 30px;
-    }
-    .topPadding40 {
-        padding-top: 40px;
-    }
-    .topMargin30 {
-        margin-top: 30px;
-    }
-    h1 {
-        font-size: 3vw;
-    }
-    h3 {
-        font-size: 2vw;
-    }
-    .noMargin {
-        margin: 0;
-    }
-    .autoMargin {
-        margin: auto;
-    }
-    .clear {
-        clear: both;
-    }
-    .goButton {
-        background-color:#a0c5e8;
-        color:#00c8f8;
-        border-radius: 5px;
-        border-color: #00c8f8;
-        border-width: 2px;
-        padding: 5 40 5 40;
-        text-align: center;
-        border-style: solid;
-        font-family: 'Lato', sans-serif;
-        width: 10vw;
-    }
-    ::placeholder {
-        color: 00c8f8;
-        font-family: 'Lato', sans-serif;
-    }
-    .input {
-        color: #00c8f8;
-        border-color: #00c8f8;
-        border-width: 2px;
-        border-style: solid;
-        padding: 5 5 5 5;
-        font-family: 'Lato', sans-serif;
-    }
-</style>

@@ -1,11 +1,60 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+    {% if error != "" %}
+    <div class="verticalAllign">
+        <div class="row">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-10">
+                <h3 class="text-center aquaText">{{ error }}</h3>
+            </div>
+            <div class="col-xs-1"></div>
+        </div>
+
+        <div class="row" style="margin-top: 20px;"></div>
+        <form class="noMargin " method="GET" action="{% url 'home' %}">
+            <div class="form-group">
+                <div class="col-xs-4 col-sm-5"></div>
+                <div class="col-xs-4 col-sm-2">
+                    <button class="btn btn-block Button" type="submit">Homepage</button>
+                </div>
+                <div class="col-xs-4 col-sm-5"></div>
+            </div>
+        </form>
+    </div>
+
+    {% else %}
+
+    <div class=fullWidth>
+        <div class="row">
+            <h2 class="text-center aquaText">Report for Query "{{ query }}"</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <canvas class="canvas" id="myChart"></canvas>
+            </div>
+        </div>
+
+        <form method="GET" action="{% url 'home' %}">
+            <div class="form-group">
+                <div class="col-xs-4 col-sm-5"></div>
+                <div class="col-xs-4 col-sm-2">
+                    <button class="btn btn-block Button" type="submit">Homepage</button>
+                </div>
+                <div class="col-xs-4 col-sm-5"></div>
+            </div>
+        </form>
+    </div>
+    
+    {% endif %}
+    
     <script>
         $(document).ready(function() {
             var ctx = document.getElementById("myChart").getContext('2d');
-            var defaultData = [];
-            var labels = ["Likes", "Neutral", "Dislikes"]
+            var percentages = {{ percentages }};
+            var labels = ["Likes (" + percentages[0] + "%)", "Neutral (" + percentages[1] + "%)", "Dislikes (" + percentages[2] + "%)"]
             var data = {{ data }};
             console.log(data);
             var myChart = new Chart(ctx, {
@@ -16,25 +65,25 @@
                         label: 'Number of Tweets',
                         data: data,
                         backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
                             'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
                         ],
                         borderColor: [
-                            'rgba(255,99,132,1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
                             'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 99, 132, 1)',
                         ],
                         borderWidth: 1
                     }]
                 },
                 options: {
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            }
+                    },
                     scales: {
                         yAxes: [{
                             ticks: {
@@ -46,11 +95,5 @@
             });
         });
     </script>
-
-    <div class="alignCenter">
-        <div class="aquaText reportNamediv">
-            <span class="reportName">Report for {{ accountName }}</span>
-        </div>
-        <canvas class="canvas" id="myChart"></canvas>
-    </div>
+    
 {% endblock %}

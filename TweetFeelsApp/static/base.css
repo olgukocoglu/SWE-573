@@ -1,0 +1,49 @@
+html {
+    font-family: 'Lato', sans-serif;
+    height: 100%;
+    width: 100%;
+}
+body {
+    height: 100%;
+    margin: 0;
+}
+.container {
+    min-height: 70%;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+}
+.verticalAllign {
+    margin-top: 80px;
+    width: 100%;
+}
+.fullWidth {
+    width: 100%;
+}
+.navbar {
+    background-color: #00c8f8;
+    height: 15%;
+    margin: 0;
+}
+.aquaText {
+    color: #00c8f8;
+}
+.Button {
+    background-color:#a0c5e8;
+    color:#00c8f8;
+    border-color: #00c8f8;
+}
+.Button:hover {
+    color:#00c8f8;
+}
+::placeholder {
+    font-family: 'Lato', sans-serif;
+}
+.input {
+    border-color: #00c8f8;
+}
+.canvas {
+    max-height: 320px;
+    max-width: 630px;
+    margin: auto;
+}
