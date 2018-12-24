@@ -8,7 +8,6 @@ class SentimentAnalysis:
         for tweet in searchedTweets:
             blob = TextBlob(tweet.full_text)
             polarity = blob.sentiment.polarity
-            print(tweet.full_text, polarity)
 
             if polarity == 0:
                 self.data[1] += 1
