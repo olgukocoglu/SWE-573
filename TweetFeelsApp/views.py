@@ -1,7 +1,5 @@
 from django.shortcuts import render
-from django.http import JsonResponse
-from .classes.twitterApi import TwitterAPI
-from .classes.analysis import SentimentalAnalysis
+from .classes.report import AnalysisReport
 
 def home(request):
     return render(request, 'home.html', {})
@@ -12,12 +10,8 @@ def results(request):
         return render(request, 'results.html', {'error':error})
     
     query = request.POST['query']
-    twitterAPI = TwitterAPI()
-    sentimentalAnalysis = SentimentalAnalysis()
+    
+    analysisReport = AnalysisReport()
+    analysisReport.CreateReport(query)
 
-    searchedTweets = twitterAPI.getTweets(query)
-    error = twitterAPI.checkTweetCount()
-    data = sentimentalAnalysis.makeAnalysisOnArray(searchedTweets)
-    percentages = sentimentalAnalysis.calculatePercentages()
-
-    return render(request, 'results.html', {'query':query, 'data':data, 'percentages':percentages, 'error':error})
+    return render(request, 'results.html', {'query': analysisReport.query, 'data': analysisReport.data, 'percentages': analysisReport.percentages, 'error': analysisReport.error})

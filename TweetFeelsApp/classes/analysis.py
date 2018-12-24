@@ -1,9 +1,8 @@
 from textblob import TextBlob
 
-class SentimentalAnalysis:
-    data = [0, 0, 0]
+class SentimentAnalysis:
 
-    def makeAnalysisOnArray(self, searchedTweets):
+    def MakeAnalysisOnArray(self, searchedTweets):
         self.data = [0, 0, 0]
         
         for tweet in searchedTweets:
@@ -20,14 +19,14 @@ class SentimentalAnalysis:
         
         return self.data
     
-    def calculatePercentages(self):
-        percentages = []
+    def CalculatePercentages(self):
+        self.percentages = []
         sumOfValues = sum(self.data)
 
         if (sumOfValues == 0):
-            return percentages
+            return self.percentages
 
         for i in range(len(self.data)):
-            percentages.append(int(self.data[i] / sumOfValues * 100))
+            self.percentages.append(int(self.data[i] / sumOfValues * 100))
         
-        return percentages
+        return self.percentages

@@ -6,7 +6,7 @@ class TwitterAPI:
     minimumTweetCount = 500
     maxTweets = 1000
 
-    def getTweets(self, query):
+    def GetTweets(self, query):
         consumerKey = os.environ['consumerKey']
         consumerSecret = os.environ['consumerSecret']
         accessKey = os.environ['accessKey']
@@ -27,15 +27,13 @@ class TwitterAPI:
                     break
                 searchedTweets.extend(newTweets)
                 lastId = newTweets[-1].id
-            except tweepy.TweepError as e:
+            except tweepy.TweepError:
                 break
                 
         self.searchedTweets = searchedTweets
-        for tweet in searchedTweets:
-            print(tweet.full_text)
         return searchedTweets
     
-    def checkTweetCount(self):
+    def CheckTweetCount(self):
         if (len(self.searchedTweets) < self.minimumTweetCount):
             return "There are not enough tweets to get accurate results from the analysis for this query."
         else:
