@@ -17,7 +17,7 @@
             <div class="form-group">
                 <div class="col-xs-4 col-sm-5"></div>
                 <div class="col-xs-4 col-sm-2">
-                    <button class="btn btn-block Button" type="submit">Homepage</button>
+                    <button class="btn btn-block homepageButton" type="submit">Homepage</button>
                 </div>
                 <div class="col-xs-4 col-sm-5"></div>
             </div>
@@ -37,15 +37,93 @@
             </div>
         </div>
 
+        <div class="row" style="margin-top: 5px;"></div>
+
+        <div class="row">
+            <div class="col-xs-1 col-sm-2"></div>
+            <div class="col-xs-3 col-sm-2">
+                <button class="btn positiveTweetsButton" data-toggle="collapse" data-target=".positiveTweets">Positive Tweets</button>
+            </div>
+            <div class="col-xs-8 col-sm-8"></div>
+        </div>
+
+        <div class="row" style="margin-top: 5px;"></div>
+
+        {% for tweets in positiveTweets %}
+
+        <div class="positiveTweets collapse row">
+            <div class="row" style="margin-top: 5px;"></div>
+            <div class="col-xs-1 col-sm-2"></div>
+            <div class="col-xs-10 col-sm-8">{{ tweets }}
+                <div style="border-bottom: 1px solid rgba(75,255,114,1); margin-top: 5px;"></div>
+            </div>
+            <div class="col-xs-1 col-sm-2"></div>
+        </div>
+
+        {% endfor %}
+
+        <div class="row" style="margin-top: 5px;"></div>
+
+        <div class="row">
+            <div class="col-xs-1 col-sm-2"></div>
+            <div class="col-xs-3 col-sm-2">
+                <button class="btn neutralTweetsButton" data-toggle="collapse" data-target=".neutralTweets">Neutral Tweets</button>
+            </div>
+            <div class="col-xs-8 col-sm-8"></div>
+        </div>
+
+        <div class="row" style="margin-top: 5px;"></div>
+
+        {% for tweets in neutralTweets %}
+
+        <div class="neutralTweets collapse row">
+            <div class="row" style="margin-top: 5px;"></div>
+            <div class="col-xs-1 col-sm-2"></div>
+            <div class="col-xs-10 col-sm-8">{{ tweets }}
+                <div style="border-bottom: 1px solid rgba(0,126,255,1); margin-top: 5px;"></div>
+            </div>
+            <div class="col-xs-1 col-sm-2"></div>
+        </div>
+
+        {% endfor %}
+
+        <div class="row" style="margin-top: 5px;"></div>
+
+        <div class="row">
+            <div class="col-xs-1 col-sm-2"></div>
+            <div class="col-xs-3 col-sm-2">
+                <button class="btn negativeTweetsButton" data-toggle="collapse" data-target=".negativeTweets">Negative Tweets</button>
+            </div>
+            <div class="col-xs-8 col-sm-8"></div>
+        </div>
+
+        <div class="row" style="margin-top: 5px;"></div>
+
+        {% for tweets in negativeTweets %}
+
+        <div class="negativeTweets collapse row">
+            <div class="row" style="margin-top: 5px;"></div>
+            <div class="col-xs-1 col-sm-2"></div>
+            <div class="col-xs-10 col-sm-8">{{ tweets }}
+                <div style="border-bottom: 1px solid rgba(255,0,0,1); margin-top: 5px;"></div>
+            </div>
+            <div class="col-xs-1 col-sm-2"></div>
+        </div>
+
+        {% endfor %}
+
         <form method="GET" action="{% url 'home' %}">
             <div class="form-group">
                 <div class="col-xs-4 col-sm-5"></div>
                 <div class="col-xs-4 col-sm-2">
-                    <button class="btn btn-block Button" type="submit">Homepage</button>
+                    <button class="btn homepageButton" type="submit">Homepage</button>
                 </div>
                 <div class="col-xs-4 col-sm-5"></div>
             </div>
+            
+            <div class="row" style="margin-top: 5px;"></div>
         </form>
+
     </div>
     
     {% endif %}

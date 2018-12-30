@@ -13,4 +13,7 @@ class AnalysisReport():
         self.searchedTweets = twitterAPI.GetTweets(query)
         self.error = twitterAPI.CheckTweetCount()
         self.data = sentimentAnalysis.MakeAnalysisOnArray(self.searchedTweets)
+        self.positiveTweets = sentimentAnalysis.positiveTweets
+        self.neutralTweets = sentimentAnalysis.neutralTweets
+        self.negativeTweets = sentimentAnalysis.negativeTweets
         self.percentages = sentimentAnalysis.CalculatePercentages()

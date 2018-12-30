@@ -14,4 +14,7 @@ def results(request):
     analysisReport = AnalysisReport()
     analysisReport.CreateReport(query)
 
-    return render(request, 'results.html', {'query': analysisReport.query, 'data': analysisReport.data, 'percentages': analysisReport.percentages, 'error': analysisReport.error})
+    return render(request, 'results.html', {'query': analysisReport.query, 'data': analysisReport.data,
+    'positiveTweets': analysisReport.positiveTweets, 'neutralTweets': analysisReport.neutralTweets,
+    'negativeTweets': analysisReport.negativeTweets, 'percentages': analysisReport.percentages,
+    'error': analysisReport.error})

@@ -4,6 +4,9 @@ class SentimentAnalysis:
 
     def MakeAnalysisOnArray(self, searchedTweets):
         self.data = [0, 0, 0]
+        self.positiveTweets = []
+        self.neutralTweets = []
+        self.negativeTweets = []
         
         for tweet in searchedTweets:
             blob = TextBlob(tweet.full_text)
@@ -11,10 +14,13 @@ class SentimentAnalysis:
 
             if polarity == 0:
                 self.data[1] += 1
+                self.neutralTweets.append(tweet.full_text)
             elif polarity > 0:
                 self.data[0] += 1
+                self.positiveTweets.append(tweet.full_text)
             elif polarity < 0:
                 self.data[2] += 1
+                self.negativeTweets.append(tweet.full_text)
         
         return self.data
     

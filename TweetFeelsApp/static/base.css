@@ -28,13 +28,71 @@ body {
 .aquaText {
     color: #00c8f8;
 }
-.Button {
-    background-color:#a0c5e8;
-    color:#00c8f8;
+.homepageButton {
+    background-color: #a0c5e8;
+    color: #00c8f8;
     border-color: #00c8f8;
+    width: 100%;
 }
-.Button:hover {
-    color:#00c8f8;
+.homepageButton:hover {
+    color: #00c8f8;
+}
+.positiveTweetsButton {
+    background-color: rgba(75,255,114,0.3);
+    color: rgba(75,255,114,1);
+    border-color: rgba(75,255,114,1);
+    width: 100%;
+}
+.positiveTweetsButton:hover {
+    color: rgba(75,255,114,1);
+}
+.positiveTweetsButton:focus {
+    color: rgba(75,255,114,1);
+    outline: none;
+}
+.positiveTweetsButton:active {
+    outline: none !important;
+}
+.positiveTweets {
+    color: rgba(75,255,114,1);
+}
+.neutralTweetsButton {
+    background-color: rgba(0,126,255,0.3);
+    color: rgba(0,126,255,1);
+    border-color: rgba(0,126,255,1);
+    width: 100%;
+}
+.neutralTweetsButton:hover {
+    color: rgba(0,126,255,1);
+}
+.neutralTweetsButton:focus {
+    color: rgba(0,126,255,1);
+    outline: none;
+}
+.neutralTweetsButton:active {
+    outline: none !important;
+}
+.neutralTweets {
+    color: rgba(0,126,255,1);
+}
+.negativeTweetsButton {
+    background-color: rgba(255,0,0,0.3);
+    color: rgba(255,0,0,1);
+    border-color: rgba(255,0,0,1);
+    width: 100%;
+}
+.negativeTweetsButton:hover {
+    color: rgba(255,0,0,1);
+}
+.negativeTweetsButton:focus {
+    color: rgba(255,0,0,1);
+    outline: none;
+}
+.negativeTweetsButton:active {
+    outline: none !important;
+}
+.negativeTweets {
+    color: rgba(255,0,0,1);
 }
 ::placeholder {
     font-family: 'Lato', sans-serif;
